@@ -20,7 +20,7 @@
         <nav id="navegacao-principal">
             <ul>
                 <li><a href="{% url 'locais:index' %}">PÁGINA INICIAL</a></li>
-                <li><a href="{% url 'index' %}">ADICIONAR NOVO LOCAL</a></li>
+                <li><a href="{% url 'locais:create' %}">ADICIONAR NOVO LOCAL</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'logout' %}">LOG OUT</a></li>
                 {% else %}

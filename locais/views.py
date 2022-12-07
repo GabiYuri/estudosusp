@@ -22,6 +22,34 @@ class LocalDetailView(generic.DetailView):
         return Local.objects.all()
 
 @login_required
+def create_local(request):
+    local = Local()
+
+    if request.method == "POST":
+        form = LocalForm(request.POST, request.FILES)
+        if form.is_valid():
+            local.nome = form.cleaned_data['nome']
+            local.status = form.cleaned_data['status']
+            local.tomada = form.cleaned_data['tomada']
+            local.ruido = form.cleaned_data['ruido']
+            local.coberto = form.cleaned_data['coberto']
+            local.grupo = form.cleaned_data['grupo']
+            local.permissoes = form.cleaned_data['permissoes']
+            local.flexibilidade = form.cleaned_data['flexibilidade']
+            local.imagem = form.cleaned_data['imagem']
+            local.inicio_func = form.cleaned_data['inicio_func']
+            local.fim_func = form.cleaned_data['fim_func']
+            local.dias_func = form.cleaned_data['dias_func']
+            local.save()
+            return HttpResponseRedirect(
+                reverse('locais:detail', args=(local.id, )))
+    else:
+        form = LocalForm()
+    context = {'local': local, 'form': form}
+    return render(request, 'locais/create.html', context)
+
+
+@login_required
 def update_local(request, local_id):
     local = get_object_or_404(Local, pk=local_id)
 

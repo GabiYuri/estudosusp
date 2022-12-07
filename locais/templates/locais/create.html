@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="register-card">
+    <div class="register-card-title"><h2>Adicionar novo local</h2></div>
+    
+    <form method="POST" enctype="multipart/form-data" action="{% url 'locais:create'%}" id="register-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Adicionar</button>
+    </form>
+    <p><a href="{% url 'locais:index' %}" >Voltar</a> </p>
+</div>
+
+{% endblock content %}

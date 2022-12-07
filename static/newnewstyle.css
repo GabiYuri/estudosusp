@@ -213,10 +213,6 @@ form#register-form button {
     font-weight: 700;
 }
 
-.local-item-img {
-    max-width: 1rem;
-}
-
 .local-item-descricao {
     display: flex;
     flex-direction: column;

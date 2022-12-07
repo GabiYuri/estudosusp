@@ -7,8 +7,9 @@ app_name = 'locais'
 urlpatterns = [
     path('', views.LocalListView.as_view(), name='index'),
     path('<int:pk>/', views.LocalDetailView.as_view(), name='detail'),
+    path('create/', views.create_local, name='create'),
     path('update/<int:local_id>/', views.update_local, name='update'),
     path('rate/<int:local_id>/', views.rate_local, name='rate'),
 ]
-if settings.DEBUG:
-        urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
