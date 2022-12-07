@@ -76,3 +76,15 @@ class Avaliacao(models.Model):
 
     def __str__(self):
         return f"{self.local.nome}: {self.rating}"
+
+
+class LocalList(models.Model):
+    author = models.ForeignKey(settings.AUTH_USER_MODEL,
+                               on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    description = models.CharField(max_length=400)
+    local = models.ManyToManyField(Local)
+
+    def __str__(self):
+        return f'{self.title} por {self.author}'
+

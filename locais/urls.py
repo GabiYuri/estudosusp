@@ -10,6 +10,10 @@ urlpatterns = [
     path('create/', views.create_local, name='create'),
     path('update/<int:local_id>/', views.update_local, name='update'),
     path('rate/<int:local_id>/', views.rate_local, name='rate'),
+    path('lists/', views.ListListView.as_view(), name='lists'),
+    path('create_list/', views.ListCreateView.as_view(), name='create_list'),
+    path('detail_list/<int:list_id>/', views.detail_list, name='detail_list'),
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

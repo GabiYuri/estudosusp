@@ -3,9 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Local
 from django.views import generic
 from django.urls import reverse, reverse_lazy
-from .models import Local, Avaliacao
+from .models import Local, Avaliacao, LocalList
 from .forms import LocalForm, RateForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class LocalListView(generic.ListView):
     local = Local
@@ -107,3 +108,21 @@ def rate_local(request, local_id):
         form = RateForm()
     context = {'form': form, 'local': local}
     return render(request, 'locais/rate.html', context)
+
+
+class ListListView(generic.ListView):
+    model = LocalList
+    template_name = 'locais/lists.html'
+
+
+class ListCreateView(LoginRequiredMixin, generic.CreateView):
+    model = LocalList
+    template_name = 'locais/create_list.html'
+    fields = ['author', 'title', 'description', 'local']
+    success_url = reverse_lazy('locais:lists')
+
+def detail_list(request, list_id):
+    list = get_object_or_404(LocalList, pk=list_id)
+    context = {'list': list}
+    return render(request, 'blog/detail_list.html', context)
+

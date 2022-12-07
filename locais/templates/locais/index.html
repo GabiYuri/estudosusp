@@ -26,6 +26,9 @@
             {% else %}
             <p>Não foi encontrado nenhum local.</p>
             {% endif %}
+            <a href="{% url 'locais:lists' %}">Ver listas de locais</a>
+            <a href="{% url 'locais:create_list' %}">Criar uma lista de locais</a>
+
             </div>
 
     </section>

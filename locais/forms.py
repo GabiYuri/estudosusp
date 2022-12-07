@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Local, Avaliacao
+from .models import Local, Avaliacao, LocalList
 
 class LocalForm(ModelForm):
     class Meta:
