@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="register-card">
+    <div class="register-card-title"><h2>Avaliar {{ local.name }}</h2></div>
+
+    <form method="POST" action="{% url 'locais:rate' local.id%}" id="register-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Avaliar</button>
+        <p><a href="{% url 'locais:detail' local.id %}" >Voltar</a> </p>
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <section>
+        <h1><i>Locais de Estudo dentro da USP</i></h1>
+        <p>Abaixo estão os locais para estudar na USP! Se você não encontrou algum local,
+            você pode adicionar um novo!
+        </p>
+
+            {% if local_list %}
+            {% for local in local_list %}
+
+            
+            <div class="local-item">
+                <div class="local-item-img"><img src="..{{local.imagem.url}}" alt="{{local.nome}}" width="100%" height="auto"></div>
+                <div class="local-item-descricao">
+                    <h3>{{ local.nome }} </h3>
+                    <p>Status: {{ local.status }}</p>
+                    <p>Última atualização: {{ local.atualizacao }}</p>
+                </div>
+                <a href="{% url 'locais:detail' local.id %}">Saiba mais</a>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>Não foi encontrado nenhum local.</p>
+            {% endif %}
+            </div>
+
+    </section>
+
+</body>
+{% endblock content %}

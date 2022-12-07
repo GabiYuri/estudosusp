@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="register-card">
+    <div class="register-card-title"><h2>Atualizar Dados do Local {{ local.name }}</h2></div>
+    
+    <form method="POST" enctype="multipart/form-data" action="{% url 'locais:update' local.id%}" id="register-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Atualizar</button>
+    </form>
+</div>
+
+{% endblock content %}
