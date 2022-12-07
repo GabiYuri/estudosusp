@@ -124,5 +124,5 @@ class ListCreateView(LoginRequiredMixin, generic.CreateView):
 def detail_list(request, list_id):
     list = get_object_or_404(LocalList, pk=list_id)
     context = {'list': list}
-    return render(request, 'blog/detail_list.html', context)
+    return render(request, 'locais/detail_list.html', context)
 

@@ -25,6 +25,10 @@ a, ul, li {
     padding: 0;
 }
 
+a.link-local{
+    color: var(--primary-color);
+}
+
 a:hover{
     color: var(--secondary-color-hover);
 }

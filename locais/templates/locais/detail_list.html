@@ -4,22 +4,21 @@
 {% block content %}
 <body>
     <section class="detail">
-        <h1> {{ list.nome }} </h1>
+        <h1> {{ list.title }} </h1>
         <div class="detail-local">
             <div class="detail-items">
                 <div class="detail-info">
-                    <p> {{list.description}}</p>
-                    
-                    {% for local in list.local_set.all %}
-                        <p>{{local.nome}} </p>
+                    <p><i> {{list.description}}</i></p>
+                    <p>Locais incluídos nessa lista:</p>
+                    {% for local in list.local.all %}
+                    <a class='link-local' href="{% url 'locais:detail' local.id %}"> {{local.nome}} </a>
+
                     {% endfor %}
 
                 </div>
             </div>
             <div class="detail-edicao">
-                <p><a href="{% url 'locais:update' local.id %}" >Atualizar dados deste local</a> </p>
-                <p><a href="{% url 'locais:rate' local.id %}" >Avaliar local</a> </p>
-                <p><a href="{% url 'locais:index' %}" >Voltar</a> </p>
+                <p><a href="{% url 'locais:lists' %}" >Voltar</a> </p>
             </div>
         </div>
         

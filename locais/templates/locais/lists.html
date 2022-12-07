@@ -9,19 +9,16 @@
             Aqui você pode ver as listas criadas até agora!
         </p>
 
-        {% for fav in locallist_list %}
+        {% for list in locallist_list %}
 
             <div class="local-item">
                 <div class="local-item-descricao">
-                    <h3>{{ fav.title }} </h3>
-                    <p> {{ fav.description }}</p>
-                    <p> Lista feita por: {{ fav.author }}</p>
-                    <p>
-                        {% for local in fav.local_set.all %}
-                        <p>{{local.nome}} </p>
-                        {% endfor %}
-                    </p>
+                    <h3>{{ list.title }} </h3>
+                    <p> {{ list.description }}</p>
+                    <p> Lista feita por: {{ list.author }}</p>
+
                 </div>
+                <p><a href="{% url 'locais:detail_list' list.id %}">Saiba mais!</a></p>
             </div>
             {% endfor %}
             </div>
